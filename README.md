@@ -7,7 +7,9 @@ Until the Americana reachs at the end (usually a couple of hours)
 
 ## Installation
 
-Clone the repo and open the index.html in your browser. That´s all.
+Clone the repo or download ZIP, extract it, and open the index.html in your browser. 
+
+That´s all.
 
 ## Usage
 
