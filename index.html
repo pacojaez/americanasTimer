@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Americanas Timer</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/modal.js" defer></script>
+</head>
+
+<body>
+    <div class="flex flex-col justify-center">
+        <h1 class="title pt-10 text-6xl">AMERICANA CUENTA ATRÁS</h1>
+        <p id="clock" class="hidden digitHour bg-gray-600 text-gray-200 font-bold text-4xl p-3"></p>
+        <button id="reloadPage" type="button" onclick="window.location.reload();" class="hidden bg-green-400 p-3 pl-4 pr-4 m-5 rounded-lg font-bold transition duration-500 ease-in-out hover:ring-2 ring-offset-2 ring-green-600">Recargar página</button>
+    </div>
+    <div class="bg-text mb-10 p-5 h-1/2">
+        <div id="settingArea" class="border-2 rounded">
+            <div class="flex flex-col">
+                <div class="flex flex-col bg-gray-500 rounded-xl p-4 m-2 align-self-center">
+                    <label for="date" class=" font-weight-700 font-bold uppercase text-2xl">FECHA:</label>
+                    <div class="align-self-center">
+                        <input id="date" type="date" name="date" class="input rounded-xl m-2" />
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex flex-col bg-gray-800 rounded-xl p-4  m-2">
+                    <label for="time" class="align-self-center font-weight-700 font-bold uppercase text-2xl">Inicio:</label>
+                    <div class="align-self-center">
+                        <input type="time" id="initHour" name="initHour" class="input rounded-xl m-2">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex flex-col bg-gray-800 rounded-xl p-4  m-2">
+                    <label for="endHour" class="align-self-center font-weight-700 font-bold uppercase text-2xl">Fin:</label>
+                    <div class="align-self-center">
+                        <input type="time" id="endHour" name="endHour" class="input rounded-xl">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex flex-col bg-gray-800 rounded-xl p-4  m-2">
+                    <label for="gameDuration" class="align-self-center font-weight-700 font-bold uppercase text-2xl">DURACION (minutos):</label>
+                    <div class="align-self-center">
+                        <input type="number" id="gameDuration" name="gameDuration" class="input rounded-xl">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center content-center space-x-6 mt-10">
+                <button type="button" onclick="start();" id="startBtn" class="bg-green-400 p-3 pl-4 pr-4 rounded-lg font-bold transition duration-500 ease-in-out hover:ring-2 ring-offset-2 ring-green-600">
+                INICIALIZAR VALORES
+                </button>
+            </div>
+            <div class="flex flex-wrap justify-center content-center space-x-6 m-6">
+                <audio controls style="display:none" id="alarmSound">
+                    <source src="material/alarm.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+        <div class="flex flex-wrap justify-center content-center space-x-6 m-6">
+            <p id="initTitle" class="text-3xl font-bold hidden bg-green-400 p-3 pl-4 pr-4 rounded-lg font-bold transition duration-500 ease-in-out hover:ring-2 ring-offset-2 ring-green-600">
+            </p>
+        </div>
+        <div class="countdown-container" id="init" style="display:none">
+            <div class="hours-up">
+                <p id="initHours" class="big-text">0</p>
+                <span>Hours</span>
+            </div>
+            <div class="min-up">
+                <p id="initMinutes" class="big-text">0</p>
+                <span>Min</span>
+            </div>
+            <div class="sec-up">
+                <p id="initSeconds" class="big-text">0</p>
+                <span>Sec</span>
+            </div>
+        </div>
+        <br>
+        <p class="hidden digitHour bg-gray-600 text-gray-200 font-bold text-4xl p-3" id="nextMatchesTitle">PRÓXIMOS PARTIDOS: </p>
+        <div class="flex flex-wrap justify-center" id="partials">
+        </div>
+    </div>
+    <!-- <button type="button" data-toggle="modal">Open Modal</button> -->
+
+    <!-- MODAL -->
+    <div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Uppss, algo fue mal</h5>
+                    <button type="button" data-close onclick="window.location.reload();" aria-label="Close">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h1 class="text-gray-700 p-2 m-2 font-weight-400 text-3xl ">
+                        Necesito saber todos los datos de Inicio de la Americana, si no me es imposible calcular los intervalos de los partidos.
+                    </h1>
+                    <h1 class="text-gray-700 p-2 m-2 font-weight-400 text-3xl ">
+                        Asegurate de rellenar todos los campos. Cierra este cuadro de dialogo y te reinicio la Aplicación.
+                    </h1>
+                    <button type="button" onclick="window.location.reload();" class="bg-red-400 p-3 pl-4 pr-4 rounded-lg font-bold transition duration-500 ease-in-out hover:ring-2 ring-offset-2 ring-green-600" data-close>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
