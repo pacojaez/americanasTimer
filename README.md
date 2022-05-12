@@ -1,6 +1,7 @@
 # AMERICANAS TIMER
 
 Americanas timer is a simple timer, a kind of Pomodoro for take control of each partial game. 
+
 Americana Padel Game is an event of some partial Games (for example 15 minutes each Partial game). 
 When a Partial Game ends, the players change the court they are playing and another Partial game begins.
 Until the Americana reachs at the end (usually a couple of hours)
@@ -10,6 +11,12 @@ Until the Americana reachs at the end (usually a couple of hours)
 Clone the repo or download ZIP, extract it, and open the index.html in your browser. 
 
 That´s all.
+
+It has been developed in Vanilla JS, no libraries.
+Tailwind CDN have been use to style the App. Not for a Production enviroment.
+
+cdn.tailwindcss.com should not be used in production. 
+To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
 
 ## Usage
 
