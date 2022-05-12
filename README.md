@@ -24,10 +24,10 @@ You need to fill all the fields to start countDown the time to each Partial Game
   <img src="https://github.com/pacojaez/americanasTimer/blob/master/material/imgReadMe/AmericanaTimer3.png?raw=true" alt="Americana Portada" width="500">
 </p>
 <p align="center">
-  <img src="https://github.com/pacojaez/americanasTimer/blob/master/material/imgReadMe/AmericanaTimer3.png?raw=true" alt="Americana Portada" width="500">
+  <img src="https://github.com/pacojaez/americanasTimer/blob/master/material/imgReadMe/AmericanaTimer4.png?raw=true" alt="Americana Portada" width="500">
 </p>
 <p align="center">
-  <img src="https://github.com/pacojaez/americanasTimer/blob/master/material/imgReadMe/AmericanaTimer4.png?raw=true" alt="Americana Portada" width="500">
+  <img src="https://github.com/pacojaez/americanasTimer/blob/master/material/imgReadMe/AmericanaTimer5.png?raw=true" alt="Americana Portada" width="500">
 </p>
 
 
